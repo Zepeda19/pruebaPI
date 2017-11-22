@@ -1,0 +1,151 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+void menu();
+int cuestionario(int &p1,int &p2,int &p3,int &p4,int &p5,int &p6,int &p71,int &p72,int &p73,int &p8,int &p9,int &p10,int &p11,int &p12,int n);
+
+int main()
+{
+	int doc;
+	float media=0;
+	int suma=0;
+	int p1=0,p2=0,p3=0,p4=0,p5=0,p6=0,p71=0,p72=0,p73=0,p8=0,p9=0,p10=0,p11=0,p12=0;
+	int opc;	
+	do
+	{
+		menu();
+		cin>>opc;
+		system("cls");
+		switch(opc)
+		{
+			case 1:
+				cout<<"Cuantas personas quieres capturar: ";
+				cin>>doc;
+				for(int n=1;n<=doc;n++)
+				{
+					cout<<"Persona "<<n<<endl;
+					cuestionario(p1,p2,p3,p4,p5,p6,p71,p72,p73,p8,p9,p10,p11,p12,n);
+					system("cls");	
+				ofstream arch("c:\\datos\\PIbase.csv",ios::app);
+				arch<<"Persona "<<n<<endl;
+				arch<<"Pregunta 1: "<<","<<p1<<endl;
+				arch<<"Pregunta 2: "<<","<<p2<<endl;
+				arch<<"Pregunta 3: "<<","<<p3<<endl;
+				arch<<"Pregunta 4: "<<","<<p4<<endl;
+				arch<<"Pregunta 5: "<<","<<p5<<endl;
+				arch<<"Pregunta 6: "<<","<<p6<<endl;
+				arch<<"Pregunta 7-1: "<<","<<p71<<endl;
+				arch<<"Pregunta 7-2: "<<","<<p72<<endl;
+				arch<<"Pregunta 7-3: "<<","<<p73<<endl;
+				arch<<"Pregunta 8: "<<","<<p8<<endl;
+				arch<<"Pregunta 9: "<<","<<p9<<endl;
+				arch<<"Pregunta 10: "<<","<<p10<<endl;
+				arch<<"Pregunta 11: "<<","<<p11<<endl;
+				suma=p1+p2+p3+p4+p5+p6+p71+p72+p73+p8+p9+p10+p11;
+				media=(suma)/13;
+				arch<<"la media de esta persona es: "<<","<<media<<endl;
+				arch<<endl;
+				arch.close();
+				}
+				
+			break;
+			
+			
+			
+		}
+	}while(opc !=0);
+return 0;	
+}
+
+void menu()
+{
+cout<<" \n   Medidas de tendencia central   \n";
+		cout<<"1---> Media \n";
+		cout<<"2---> Mediana \n";
+		cout<<"3---> Moda \n";
+		cout<<"0---> Salir \n";
+		cout<<"Coloca un el numero de la opcion: ";
+		
+}
+
+int cuestionario(int &p1,int &p2,int &p3,int &p4,int &p5,int &p6,int &p71,int &p72,int &p73,int &p8,int &p9,int &p10,int &p11,int &p12,int n)
+{
+	int x=0;
+	for(int i=1;i<=18;i++)
+	{	x++;
+		system("cls");
+		switch(x)
+		{
+			case 1:
+				cout<<"Cuantas funetes de poder Conoses: ";
+				cin>>p1;
+				
+			break;
+			case 2:
+				cout<<"1-->Mucho"<<endl<<"2-->Poco"<<endl<<"3-->NAda"<<endl;
+				cout<<"Que tan familiarizado esta con el uso de la fuente de poder: ";
+				cin>>p2;
+				if(p2==3)
+				{
+					x=5;
+				}
+			break;
+			case 3:
+				cout<<"1--> +-5v"<<endl<<"2--> +-12V"<<endl<<"3--> Variable 1.2-12v"<<endl;
+				cout<<"Que gama de voltaje utiliza de manera mas frecuente: ";
+				cin>>p3;
+			break;
+			case 4:
+				cout<<"1--> 0.3-.9amp"<<endl<<"2--> 1amp"<<endl<<"3--> 2amp"<<endl<<"4--> 3amp"<<endl;
+				cout<<"Que gama de amperaje utiliza de manera mas frecuente: ";
+				cin>>p4;
+			break;
+			case 5:
+				cout<<"1--> Regulable"<<endl<<"2--> Estatica"<<endl<<"3--> Ambas"<<endl;
+				cout<<"Si fuera a adquirir una funete de poder, que tipo de fuente le interesa: ";
+				cin>>p5;
+			break;
+			case 6:
+				cout<<"1--> No ha utilizado"<<endl<<"2--> Steren"<<endl<<"3--> Tektronics"<<endl;
+				cout<<"De las anteriores marcas de fuentes de poder, cual ha utilizado: ";
+				cin>>p6;
+				if(p6==1)
+				{
+					x=7;
+				}
+			break;
+			case 7:
+				cout<<"del 1 al 7, indique si esta de acuredo(7) o en desacuerdo(1) con lo siguiente: "<<endl;
+				cout<<"La marca que utilizo es funcional para sus necesidades: "<<endl;
+				cin>>p71;
+				cout<<"La marca que utilizo ofrece un buen precio: "<<endl;
+				cin>>p72;
+				cout<<"La marca que utilizo ofrece un buen: amperaje y voltaje: "<<endl;
+				cin>>p73;
+			break;
+			case 8:
+				cout<<"Estaria dispuesto a probar una nueva marca de fuente de poder: "<<endl;
+				cout<<"1--> si"<<endl<<"2--> no"<<endl;
+				cin>>p8;
+			break;
+			case 9:
+				printf("1--> cada 2 a%cos", 164);
+				printf("\n 2--> cada 5 a%cos", 164);
+				printf("\n 3--> cada 10 a%cos", 164);
+				cout<<"\n Con que frecuencia compraria una fuente de poder: ";
+				cin>>p9;
+			break;
+			case 10:
+				cout<<"1-->$ 100 a 300"<<endl<<"2-->$ 301 a 6000"<<endl<<"3-->$ 601 a 900"<<endl<<"4-->$ mas de 900"<<endl;
+				cout<<"Cuanto estaria dispuesto a pagar por una fuente de poder: ";
+				cin>>p10;
+			break;
+			case 11:
+				cout<<"1--> Casa"<<endl<<"2--> Hospital"<<endl<<"3--> Laboratorio"<<endl<<"4-->Oficina"<<endl<<"5-->Taller"<<endl;
+				cout<<"En dnde concidera que se usa mas una fuente de poder: ";
+				cin>>p11;
+			break;
+		}
+	}
+	return p1,p2,p3,p4,p5,p6,p71,p72,p73,p8,p9,p10,p11;
+}
