@@ -2,15 +2,14 @@
 #include <fstream>
 using namespace std;
 void menu();
-int cuestionario(int &p,int n,int x);
+int cuestionario(int &p,int &n,int &x);
 
 
 int main()
 {
 	int doc;
-	float media=0;
+	float media=0,suma=0;
 	int x=0;
-	int suma=0;
 	int p=0;
 	int opc;	
 	do
@@ -30,16 +29,16 @@ int main()
 					cout<<"Persona "<<n<<endl;
 					cuestionario(p,n,x);
 					system("cls");	
+					ofstream arch("c:\\datos\\PIbase.csv",ios::app);
+					arch<<"Persona "<<n<<endl;
+					arch<<"Pregunta "<<x<<":"<<","<<p<<endl;
+					suma+=p;
+					media=suma/doc;
+				}	
 				ofstream arch("c:\\datos\\PIbase.csv",ios::app);
-				arch<<"Persona "<<n<<endl;
-				arch<<"Pregunta "<<x<<":"<<","<<p<<endl;
-				suma+=p;
-				media=suma/p;
-				arch<<"la media de esta persona es: "<<","<<media<<endl;
+				arch<<"la media de estas persona es: "<<","<<media<<endl;
 				arch<<endl;
 				arch.close();
-				}
-				
 			break;
 			
 			
@@ -60,7 +59,7 @@ cout<<" \n   Medidas de tendencia central   \n";
 		
 }
 
-int cuestionario(int &p,int n,int x)
+int cuestionario(int &p,int &n,int &x)
 {
 		switch(x)
 		{
